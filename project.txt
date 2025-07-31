@@ -1,0 +1,101 @@
+loopit/
+│
+├── cmd/
+│   └── loopit/
+│       └── main.go                     # CLI entrypoint
+│
+├── internal/
+│
+│   ├── domain/                         # Pure struct definitions (no logic)
+│   │   ├── user.go
+│   │   ├── product.go
+│   │   ├── category.go
+│   │   ├── order.go
+│   │   ├── feedback.go
+│   │   ├── buying_request.go
+│   │   ├── return_request.go
+│   │   ├── product_image.go
+│   │   ├── society.go
+│   │   ├── lender.go
+│   │   └── notification.go
+│
+│   ├── service/                        # Interfaces + logic (call repo interfaces)
+│   │   ├── user_service.go             # type UserService interface {...}, NewUserService(...)
+│   │   ├── product_service.go
+│   │   ├── category_service.go
+│   │   ├── order_service.go
+│   │   ├── auth_service.go
+│   │   ├── admin_service.go
+│   │   ├── notification_service.go
+│   │   ├── buying_request_service.go
+│   │   ├── return_request_service.go
+│   │   ├── feedback_service.go
+│   │   └── image_upload_service.go     # Validates and uploads images
+│
+│   ├── repository/                     # Interfaces only (abstract storage)
+│   │   ├── user_repository.go
+│   │   ├── product_repository.go
+│   │   ├── category_repository.go
+│   │   ├── order_repository.go
+│   │   ├── feedback_repository.go
+│   │   ├── buying_request_repository.go
+│   │   ├── return_request_repository.go
+│   │   ├── image_repository.go
+│   │   └── notification_repository.go
+│
+│   └── storage/                        # File-based repo implementations
+│       ├── file_user_repository.go
+│       ├── file_product_repository.go
+│       ├── file_category_repository.go
+│       ├── file_order_repository.go
+│       ├── file_feedback_repository.go
+│       ├── file_buying_request_repository.go
+│       ├── file_return_request_repository.go
+│       ├── file_image_repository.go
+│       └── file_notification_repository.go
+│
+├── cli/                                # CLI layer: accepts user input
+│   ├── commands/
+│   │   ├── user_cmd.go
+│   │   ├── product_cmd.go
+│   │   ├── order_cmd.go
+│   │   ├── feedback_cmd.go
+│   │   ├── return_request_cmd.go
+│   │   ├── buying_request_cmd.go
+│   │   ├── admin_cmd.go
+│   │   ├── auth_cmd.go
+│   │   └── notification_cmd.go
+│   └── utils.go
+│
+├── config/
+│   └── config.go                        # Contains all config values (paths, ports, etc.)
+│
+├── pkg/                                 # Common packages
+│   ├── logger/
+│   │   └── logger.go
+│   ├── errors/
+│   │   └── custom_error.go
+│   ├── jwt/
+│   │   └── token.go
+│   └── utils/
+│       └── file_utils.go
+│
+├── data/                                # Local file storage
+│   ├── users.json
+│   ├── products.json
+│   ├── categories.json
+│   ├── orders.json
+│   ├── feedbacks.json
+│   ├── buying_requests.json
+│   ├── return_requests.json
+│   ├── product_images.json
+│   ├── notifications.json
+│   └── societies.json
+│
+├── test/                                # Integration / end-to-end tests
+│   ├── service/
+│   ├── cli/
+│   └── storage/
+│
+├── go.mod
+└── README.md
