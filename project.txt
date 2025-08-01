@@ -99,3 +99,106 @@ loopit/
 │
 ├── go.mod
 └── README.md
+
+//...........................................with unit testing
+loopit/
+│
+├── cmd/                         # Application entry point
+│   └── loopit/
+│       └── main.go              # Main function initializes CLI or server
+│
+├── cli/                         # CLI interface layer
+│   ├── commands/                # Individual CLI commands
+│   │   ├── user_cmd.go
+│   │   ├── product_cmd.go
+│   │   ├── order_cmd.go
+│   │   ├── feedback_cmd.go
+│   │   ├── buying_request_cmd.go
+│   │   ├── return_request_cmd.go
+│   │   └── ...
+│   ├── utils/                   # Helpers for CLI I/O
+│   │   └── printer.go
+│   └── input.go                 # CLI input prompt handlers
+│
+├── config/                      # App configuration
+│   ├── config.go                # Loads environment/config
+│   └── constants.go             # Global constants
+│
+├── data/                        # JSON file storage
+│   ├── users.json
+│   ├── products.json
+│   ├── orders.json
+│   ├── feedback.json
+│   ├── buying_requests.json
+│   ├── return_requests.json
+│   └── ...
+│
+├── internal/
+│   ├── domain/                  # Entity definitions
+│   │   ├── user.go
+│   │   ├── product.go
+│   │   ├── order.go
+│   │   ├── feedback.go
+│   │   ├── buying_request.go
+│   │   ├── return_request.go
+│   │   ├── product_image.go
+│   │   ├── society.go
+│   │   ├── lender.go
+│   │   └── ...
+│   │
+│   ├── service/                 # Business logic layer (interfaces + implementations)
+│   │   ├── user_service.go
+│   │   ├── product_service.go
+│   │   ├── order_service.go
+│   │   ├── feedback_service.go
+│   │   ├── auth_service.go
+│   │   ├── admin_service.go
+│   │   ├── notification_service.go
+│   │   ├── buying_request_service.go
+│   │   ├── return_request_service.go
+│   │   ├── image_upload_service.go
+│   │   └── mocks/              # Mock interfaces for unit testing
+│   │       ├── user_repository_mock.go
+│   │       ├── product_repository_mock.go
+│   │       └── ...
+│   │
+│   ├── repository/              # Interface definitions (ports)
+│   │   ├── user_repository.go
+│   │   ├── product_repository.go
+│   │   ├── order_repository.go
+│   │   ├── feedback_repository.go
+│   │   ├── buying_request_repository.go
+│   │   ├── return_request_repository.go
+│   │   └── ...
+│   │
+│   ├── storage/                 # File-based implementation of repositories
+│   │   ├── file_user_repository.go
+│   │   ├── file_product_repository.go
+│   │   ├── file_order_repository.go
+│   │   ├── file_feedback_repository.go
+│   │   ├── file_buying_request_repository.go
+│   │   ├── file_return_request_repository.go
+│   │   └── ...
+│   │
+│   └── middleware/             # Optional: Validation, auth checks, etc.
+│       └── logger.go
+│
+├── pkg/                         # Reusable utility packages
+│   ├── logger/
+│   │   └── logger.go            # Custom logger
+│   ├── validator/
+│   │   └── validator.go         # Input validation utils
+│   └── utils/
+│       └── json_utils.go        # JSON read/write helpers
+│
+├── test/                        # High-level integration and CLI tests
+│   ├── cli/
+│   │   ├── user_cmd_test.go
+│   │   └── ...
+│   └── integration/
+│       ├── user_flow_test.go
+│       ├── product_flow_test.go
+│       └── ...
+│
+├── go.mod
+└── README.md
